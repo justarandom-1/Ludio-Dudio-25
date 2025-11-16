@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float totalTime;
     private float timeLeft;
+    private Vector3 cameraOffset;
 
     private GameObject text;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
         timeLeft = totalTime;
         rb = GetComponent<Rigidbody2D>();
         text = GameObject.Find("TimeText");
+        cameraOffset = Camera.main.transform.position - transform.position;
     }
 
     // Update is called once per frame
@@ -29,6 +31,29 @@ public class Player : MonoBehaviour
         }
         //DEBUG
         text.GetComponent<TMP_Text>().text = "Time Left: " + timeLeft.ToString();
+    }
+    void LateUpdate()
+    {
+        //camera follow
+        // Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+        // if (pos.x > 0.7)
+        // {
+        //     Camera.main.transform.Translate(Vector3.right * speed * Time.deltaTime);
+        // }
+        // else if (pos.x < 0.3)
+        // {
+        //     Camera.main.transform.Translate(Vector3.left * speed * Time.deltaTime);
+        // }
+
+        // if (pos.y > 0.7)
+        // {
+        //     Camera.main.transform.Translate(Vector3.up * speed * Time.deltaTime);
+        // }
+        // else if (pos.y < 0.3)
+        // {
+        //     Camera.main.transform.Translate(Vector3.down * speed * Time.deltaTime);
+        // }
+        Camera.main.transform.position = transform.position + cameraOffset;
     }
     void OnMove(InputValue inputValue)
     {
