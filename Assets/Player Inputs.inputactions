@@ -41,6 +41,14 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "a1da971e-6e7d-42a3-94f0-14a98185312d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -266,12 +274,12 @@
                 },
                 {
                     "name": "",
-                    "id": "41d336a4-4a4f-496a-a897-29c0929e646e",
-                    "path": "",
+                    "id": "7c6fe1fd-7c22-42d3-acf5-6c1d0f45375c",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Dash",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

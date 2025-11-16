@@ -7,6 +7,10 @@ public class Player : MonoBehaviour
 {
     [SerializeField] Vector2 xRange;
 
+    private Vector3 cameraOffset;
+
+    private GameObject interacting;
+
     [SerializeField] Vector2 yRange;
 
     [SerializeField] private float speed;
@@ -70,8 +74,41 @@ public class Player : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    void LateUpdate()
     {
+        //camera follow
+        // Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+        // if (pos.x > 0.7)
+        // {
+        //     Camera.main.transform.Translate(Vector3.right * speed * Time.deltaTime);
+        // }
+        // else if (pos.x < 0.3)
+        // {
+        //     Camera.main.transform.Translate(Vector3.left * speed * Time.deltaTime);
+        // }
+
+        // if (pos.y > 0.7)
+        // {
+        //     Camera.main.transform.Translate(Vector3.up * speed * Time.deltaTime);
+        // }
+        // else if (pos.y < 0.3)
+        // {
+        //     Camera.main.transform.Translate(Vector3.down * speed * Time.deltaTime);
+        // }
+        Camera.main.transform.position = transform.position + cameraOffset;
+    }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        interacting = collision.gameObject;
+        //perhaps show an E above the character
+    }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        interacting = null;
+        //remove the E if you show it
+    }
+
+    void FixedUpdate()
         if(!isAtMouse){
             movementVector = (Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
 
@@ -110,8 +147,17 @@ public class Player : MonoBehaviour
             }
         }
     }
-
-
+    void OnInteract(InputValue inputValue)
+    {
+        if (inputValue.isPressed)
+        {
+            if (interacting != null)
+            {
+                //perform interact action
+                Debug.Log("interacted with " + interacting.name);
+            }
+        }
+    }
     void Reset()
     {
         //do animation stuff maybe?
