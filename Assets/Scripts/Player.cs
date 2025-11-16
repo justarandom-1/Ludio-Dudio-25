@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float speed;
 
+    [SerializeField] private float turnSpeed;
+
     private Rigidbody2D rb;
 
     private Animator animator;
@@ -20,6 +22,10 @@ public class Player : MonoBehaviour
     private Vector2 movementVector = Vector2.zero;
 
     private AudioSource audioSource;
+
+    private float displayDirection;
+
+    private Vector3 scale;
 
     [SerializeField] float dashLimit;
 
@@ -32,8 +38,8 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip dashSFX;
 
     public static Player instance;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    void Awake()
     {
         instance = this;
 
@@ -43,7 +49,8 @@ public class Player : MonoBehaviour
         animator = child.GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
 
-        direction = Mathf.Sign(transform.localScale.x);
+        scale = transform.localScale;
+        displayDirection = direction = Mathf.Sign(scale.x);
 
         // input = GetComponent<PlayerInput>();
     }
@@ -86,6 +93,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+
         if(!isAtMouse){
             movementVector = (Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
 
@@ -94,10 +102,6 @@ public class Player : MonoBehaviour
             float angle = direction * Vector2.SignedAngle(Vector2.right * direction, movementVector);
 
             animator.SetFloat("angle", angle);
-
-            if(direction != Mathf.Sign(transform.localScale.x)){
-                transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-            }
 
             rb.linearVelocity = movementVector.normalized * speed;
             // PlayerAnimator.SetInteger("Verticaldirection", (int)movementVector.y);
@@ -123,6 +127,16 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        if(direction != displayDirection)
+        {
+            displayDirection += direction * Time.deltaTime * turnSpeed;
+
+            if(Mathf.Sign(displayDirection) == direction && Mathf.Abs(displayDirection) >= 1)
+                displayDirection = direction;
+
+            transform.localScale = new Vector3(scale.x * displayDirection, scale.y, scale.z);
+        }
     }
     void OnInteract(InputValue inputValue)
     {
@@ -146,6 +160,16 @@ public class Player : MonoBehaviour
     public Vector2 getPosition()
     {
         return transform.position;
+    }
+
+    public Vector2 getXRange()
+    {
+        return xRange;
+    }
+
+    public Vector2 getYRange()
+    {
+        return yRange;
     }
 
     public Vector2 isInBoundary()
