@@ -109,6 +109,7 @@ public class Player : MonoBehaviour
     }
 
     void FixedUpdate()
+    {
         if(!isAtMouse){
             movementVector = (Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
 
