@@ -54,6 +54,6 @@ public class TimeManager : MonoBehaviour
         
         displayMask.fillAmount = progress;
 
-        displayInterval.anchoredPosition = Vector2.right * Mathf.Lerp(230f, -230f, progress);
+        displayInterval.anchoredPosition = Vector2.right * Mathf.Lerp(228f, -232f, progress);
     }
 }

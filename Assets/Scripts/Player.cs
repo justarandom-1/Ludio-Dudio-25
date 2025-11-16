@@ -7,8 +7,6 @@ public class Player : MonoBehaviour
 {
     [SerializeField] Vector2 xRange;
 
-    private Vector3 cameraOffset;
-
     private GameObject interacting;
 
     [SerializeField] Vector2 yRange;
@@ -74,29 +72,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void LateUpdate()
-    {
-        //camera follow
-        // Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
-        // if (pos.x > 0.7)
-        // {
-        //     Camera.main.transform.Translate(Vector3.right * speed * Time.deltaTime);
-        // }
-        // else if (pos.x < 0.3)
-        // {
-        //     Camera.main.transform.Translate(Vector3.left * speed * Time.deltaTime);
-        // }
 
-        // if (pos.y > 0.7)
-        // {
-        //     Camera.main.transform.Translate(Vector3.up * speed * Time.deltaTime);
-        // }
-        // else if (pos.y < 0.3)
-        // {
-        //     Camera.main.transform.Translate(Vector3.down * speed * Time.deltaTime);
-        // }
-        Camera.main.transform.position = transform.position + cameraOffset;
-    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         interacting = collision.gameObject;
