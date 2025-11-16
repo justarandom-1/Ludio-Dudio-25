@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private float timeLeft;
     private Vector3 cameraOffset;
 
+    private GameObject interacting;
+
     private GameObject text;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -55,10 +57,31 @@ public class Player : MonoBehaviour
         // }
         Camera.main.transform.position = transform.position + cameraOffset;
     }
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        interacting = collision.gameObject;
+        //perhaps show an E above the character
+    }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        interacting = null;
+        //remove the E if you show it
+    }
     void OnMove(InputValue inputValue)
     {
         Vector2 dir = inputValue.Get<Vector2>();
         rb.linearVelocity = dir * speed;
+    }
+    void OnInteract(InputValue inputValue)
+    {
+        if (inputValue.isPressed)
+        {
+            if (interacting != null)
+            {
+                //perform interact action
+                Debug.Log("interacted with " + interacting.name);
+            }
+        }
     }
     void Reset()
     {
