@@ -147,6 +147,28 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
+      name: Axolotl_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1920
+        width: 640
+        height: 480
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53dd83c9bc725dcc0800000000000000
+      internalID: -3686996964480066251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: Axolotl_1
       rect:
         serializedVersion: 2
@@ -162,8 +184,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 53dd83c9bc725dcc0800000000000000
-      internalID: -3686996964480066251
+      spriteID: 525230b4e93ed2ef0800000000000000
+      internalID: -131198545121041115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Axolotl_6
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1440
+        width: 640
+        height: 480
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c1050695035e4f10800000000000000
+      internalID: 2255831746816049608
       vertices: []
       indices: 
       edges: []
@@ -184,8 +228,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 525230b4e93ed2ef0800000000000000
-      internalID: -131198545121041115
+      spriteID: 7cc0090cbca8e30e0800000000000000
+      internalID: -2288238952943973177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Axolotl_7
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 960
+        width: 640
+        height: 480
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 502a9e87ec28567498a34f021bcc8a47
+      internalID: 422666739
       vertices: []
       indices: 
       edges: []
@@ -204,10 +270,32 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8c1050695035e4f10800000000000000
-      internalID: 2255831746816049608
+      spriteID: 307449d3ba937e545850dbf6dd3f71e5
+      internalID: -2125261800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Axolotl_8
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 480
+        width: 640
+        height: 480
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a528bd74e0116044fb06ca630ae44c03
+      internalID: 1773158167
       vertices: []
       indices: 
       edges: []
@@ -226,10 +314,32 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7cc0090cbca8e30e0800000000000000
-      internalID: -2288238952943973177
+      spriteID: 3f8d312f50b06ac46a4d728971febd9d
+      internalID: 1042238859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Axolotl_9
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 640
+        height: 480
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eec85b83e4088e4bbd49bfdcb9d1856
+      internalID: -600330405
       vertices: []
       indices: 
       edges: []
@@ -248,13 +358,18 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":5.0},"gridSpriteSize":{"x":640.0,"y":480.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":5.0},"gridSpriteSize":{"x":640.0,"y":480.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Axolotl_0: 2629135747056496516
-      Axolotl_1: -3686996964480066251
-      Axolotl_2: -131198545121041115
-      Axolotl_3: 2255831746816049608
-      Axolotl_4: -2288238952943973177
+      Axolotl_1: -131198545121041115
+      Axolotl_2: -2288238952943973177
+      Axolotl_3: -2125261800
+      Axolotl_4: 1042238859
+      Axolotl_5: -3686996964480066251
+      Axolotl_6: 2255831746816049608
+      Axolotl_7: 422666739
+      Axolotl_8: 1773158167
+      Axolotl_9: -600330405
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
