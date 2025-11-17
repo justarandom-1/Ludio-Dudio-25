@@ -10,16 +10,21 @@ public class TimeManager : MonoBehaviour
     [SerializeField] RectTransform displayInterval;
 
 
+    [SerializeField] Vector2 fillRange;
+    [SerializeField] Vector2 intervalRange;
+
+
     private bool hasStarted = false;
     private bool hasEnded = false;
 
     private float maxWidth;
     private float timer = 0;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
+        displayMask.fillAmount = fillRange.x;
+
+        displayInterval.anchoredPosition = Vector2.right * intervalRange.x;
     }
 
     // Update is called once per frame
@@ -52,8 +57,8 @@ public class TimeManager : MonoBehaviour
 
         float progress = timer / totalTime;
         
-        displayMask.fillAmount = progress;
+        displayMask.fillAmount = Mathf.Lerp(fillRange.x, fillRange.y, progress);
 
-        displayInterval.anchoredPosition = Vector2.right * Mathf.Lerp(228f, -232f, progress);
+        displayInterval.anchoredPosition = Vector2.right * Mathf.Lerp(intervalRange.x, intervalRange.y, progress);
     }
 }

@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 717c53e0e5ca740de8676070ea985076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  xRange: {x: 0, y: 100}
-  yRange: {x: 0, y: 100}
+  xRange: {x: 0, y: 300}
+  yRange: {x: -100, y: 85}
   speed: 5
   turnSpeed: 4
   dashLimit: 1

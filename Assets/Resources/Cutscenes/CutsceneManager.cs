@@ -9,6 +9,8 @@ using TMPro;
 
 public class CutsceneManager : LevelManager
 {
+    new public static CutsceneManager instance;
+
     [SerializeField] protected GameObject[] objects;
 
     [SerializeField] protected AudioClip[] sounds;
@@ -43,7 +45,15 @@ public class CutsceneManager : LevelManager
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
-        base.Start();
+        instance = this;
+
+        audioSource = GetComponent<AudioSource>();
+
+        maxLevel = PlayerPrefs.GetInt("maxLevel", 0);
+
+        dialogueVol = 1.0f / audioSource.volume;
+
+        audioSource.Play();
 
         if (voiceClips == null)
         {
