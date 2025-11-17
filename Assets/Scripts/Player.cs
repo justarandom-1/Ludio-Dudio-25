@@ -37,6 +37,8 @@ public class Player : MonoBehaviour
     private float direction;
     private bool isAtMouse = false;
 
+    private Color normalColor;
+
     [SerializeField] AudioClip dashSFX;
 
     public static Player instance;
@@ -51,6 +53,8 @@ public class Player : MonoBehaviour
         animator = child.GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         sp = child.GetComponent<SpriteRenderer>();
+
+        normalColor = sp.color;
 
         scale = transform.localScale;
         displayDirection = direction = Mathf.Sign(scale.x);
@@ -129,10 +133,10 @@ public class Player : MonoBehaviour
                     isDashHeld = false;
                     isDashing = false;
                     dashTime = 0;
-                    sp.color = Color.white;
+                    sp.color = normalColor;
                 }else{
                     rb.linearVelocity *= 2;
-                    sp.color = Color.Lerp(new Color(0.8f,0,0),Color.white,dashTime/dashLimit);
+                    sp.color = Color.Lerp(Color.white, normalColor,dashTime/dashLimit);
                 }
             }
         }
