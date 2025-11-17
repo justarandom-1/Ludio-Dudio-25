@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
 
     private AudioSource audioSource;
 
+    private SpriteRenderer sp;
+
     private float displayDirection;
 
     private Vector3 scale;
@@ -48,6 +50,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = child.GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        sp = child.GetComponent<SpriteRenderer>();
 
         scale = transform.localScale;
         displayDirection = direction = Mathf.Sign(scale.x);
@@ -68,17 +71,21 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)) && dashTime < dashLimit)
+        
+    }
+
+    void OnDash(InputValue inputValue)
+    {
+        if(inputValue.isPressed && dashTime < dashLimit)
         {
             isDashHeld = true;
         }
 
-        if((Input.GetMouseButtonUp(0) || Input.GetKeyUp(KeyCode.Space)) && isDashHeld)
+        if(!inputValue.isPressed && isDashHeld)
         {
             isDashHeld = false;
         }
     }
-
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -122,8 +129,10 @@ public class Player : MonoBehaviour
                     isDashHeld = false;
                     isDashing = false;
                     dashTime = 0;
+                    sp.color = Color.white;
                 }else{
                     rb.linearVelocity *= 2;
+                    sp.color = Color.Lerp(new Color(0.8f,0,0),Color.white,dashTime/dashLimit);
                 }
             }
         }

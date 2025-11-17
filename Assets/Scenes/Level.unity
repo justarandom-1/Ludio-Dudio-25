@@ -2012,6 +2012,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3541368793802830336, guid: 481bbbad965782143a0eda2a2b3f2a08, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541368793802830336, guid: 481bbbad965782143a0eda2a2b3f2a08, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541368793802830336, guid: 481bbbad965782143a0eda2a2b3f2a08, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8740959157423134320, guid: 481bbbad965782143a0eda2a2b3f2a08, type: 3}
       propertyPath: xRange.y
       value: 100
