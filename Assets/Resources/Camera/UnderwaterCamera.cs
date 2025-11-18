@@ -12,6 +12,8 @@ public class UnderwaterCamera : MonoBehaviour
 
     public static UnderwaterCamera instance;
 
+    [SerializeField] Vector2 offsetVector;
+
     // 0 - up, 1 - down, 2 - left, 3 - right
     [SerializeField] bool[] borders = {false, true, true, false};
 
@@ -19,11 +21,18 @@ public class UnderwaterCamera : MonoBehaviour
     void Start () 
     {
         instance = this;
+
+        if(Player.instance.getPosition() == Vector2.zero)
+        {
+            borders = new bool[]{false, true, true, false};
+        }
         // Water = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 
     void FixedUpdate()
     {
+        if(Player.instance.hasWon)
+            return;
         // float PlayerY = Player.instance.GetPosition().y;
         // if(-230 < PlayerY && PlayerY < 0){
         //     float brightness = (PlayerY + 230) / 230F;
@@ -35,6 +44,10 @@ public class UnderwaterCamera : MonoBehaviour
         // check = new Vector2(1, 1);
 
         Vector2 playerPosition = Player.instance.getPosition();
+
+        Vector2 offset = Vector2.Lerp(Vector2.zero, offsetVector, (playerPosition.x - 210f) / 5);
+        
+        playerPosition += offset;
 
         Vector2 distance = playerPosition - (Vector2) transform.position;
 

@@ -314,8 +314,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScrollingBG
   xRange: {x: 8, y: -8}
-  playerXRange: {x: 0, y: 0}
-  usePlayerX: 1
+  playerXRange: {x: 0, y: 220}
+  usePlayerX: 0
   yRange: {x: 5, y: -5}
   playerYRange: {x: 0, y: 0}
   usePlayerY: 1
@@ -5639,6 +5639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b925b43d023f5cb42b14520abbfc1a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainCamera
+  offsetVector: {x: 5, y: 2.5}
   borders: 00010100
 --- !u!114 &2416607833678648402
 MonoBehaviour:

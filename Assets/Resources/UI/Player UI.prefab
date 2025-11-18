@@ -690,7 +690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4262de06726fc2f4ea32dc921c636bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
-  totalTime: 285
+  totalTime: 251
   offset: 0.5
   displayMask: {fileID: 7356942099976025860}
   displayInterval: {fileID: 4765106825651505150}

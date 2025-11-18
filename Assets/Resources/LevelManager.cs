@@ -70,6 +70,11 @@ public class LevelManager : MonoBehaviour
         EndLevel();
     }
 
+    public void StopSound()
+    {
+        audioSource.Stop();
+    }
+
     public virtual void EndLevel()
     {
         state = 2;
@@ -90,7 +95,7 @@ public class LevelManager : MonoBehaviour
     {
         if (state == 2)
         {
-            audioSource.volume = Mathf.Max(audioSource.volume - Time.deltaTime / dialogueVol, 0);
+            audioSource.volume = Mathf.Max(audioSource.volume - Time.unscaledDeltaTime / dialogueVol, 0);
 
             if (audioSource.volume == 0)
             {

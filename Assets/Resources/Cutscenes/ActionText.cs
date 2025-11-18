@@ -44,14 +44,25 @@ public class ActionText: CutsceneManager
         {
             stage++;
 
-            if(stage == numLines)
+            if(currentChar == "Slug" && stage == numLines - 1)
             {
                 lv.UserRequestedViewAdvancement();
+                LevelManager.instance.StopSound();
+                audioSource.Play();
+            }
+            else if(stage == numLines)
+            {
+                lv.UserRequestedViewAdvancement();
+
+                if(currentChar == "Slug")
+                {
+                    LevelManager.instance.Lose();
+                    return;
+                }
                 stage = 0;
                 isActive = false;
+                EndDialogue();
 
-                if(shouldEndTurn)
-                    EndDialogue();
 
                 if(endAction != null)
                 {

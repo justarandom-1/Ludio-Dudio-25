@@ -2,25 +2,25 @@ using UnityEngine;
 
 public class AnomalocarisSpawner : MonoBehaviour
 {
-    [SerializeField] Vector2 range;
-    [SerializeField] GameObject anomalocaris;
-    [SerializeField] float spawnRate;
+    [SerializeField] protected Vector2 range;
+    [SerializeField] protected GameObject anomalocaris;
+    [SerializeField] protected float spawnRate;
 
-    private float timer = 0;
+    protected float timer = 0;
 
-    private float span;
+    protected float span;
 
-    private Vector3 spawnPos;
+    protected Vector3 spawnPos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected virtual void Start()
     {
         span = Mathf.Abs(range.x - range.y);
         spawnPos = new Vector3(0, transform.position.y, anomalocaris.transform.position.z);
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         timer += Time.deltaTime;
 

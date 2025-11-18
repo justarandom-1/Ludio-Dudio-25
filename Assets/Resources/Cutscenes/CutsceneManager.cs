@@ -53,7 +53,7 @@ public class CutsceneManager : LevelManager
 
         dialogueVol = 1.0f / audioSource.volume;
 
-        audioSource.Play();
+        // audioSource.Play();
 
         if (voiceClips == null)
         {
@@ -67,10 +67,10 @@ public class CutsceneManager : LevelManager
         // tmp = transform.GetChild(3).gameObject.GetComponent<TMP_Text>();
         rt = GetComponent<RectTransform>();
 
-        nextScene = "Day 2 End";
+        // nextScene = "Day 2 End";
 
-        if(dr != null)
-            dr.StartDialogue("LoadVars");
+        // if(dr != null)
+        //     dr.StartDialogue("LoadVars");
 
         if (!doNotSave)
         {

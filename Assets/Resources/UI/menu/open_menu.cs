@@ -19,6 +19,8 @@ public class open_menu : LevelManager
     {
         base.Start();
 
+        Time.timeScale = 1;
+
         audioSource.Play();
 
         // LevelManager.CursorOn();

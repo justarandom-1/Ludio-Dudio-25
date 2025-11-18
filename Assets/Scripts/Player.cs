@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] Vector2 yRange;
 
     [SerializeField] private float speed;
+    [SerializeField] private float walkingSpeed;
 
     [SerializeField] private float turnSpeed;
 
@@ -42,6 +43,18 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip dashSFX;
 
     public static Player instance;
+
+    private float stunTimer;
+
+    [SerializeField] float stunTime;
+
+    private int mode = 0;
+
+    private bool isJumping = false;
+
+    [SerializeField] float jumpForce;
+
+    public bool hasWon;
 
     void Awake()
     {
@@ -80,6 +93,16 @@ public class Player : MonoBehaviour
 
     void OnDash(InputValue inputValue)
     {
+        if(inputValue.isPressed && mode == 1)
+        {
+            if(!isJumping)
+            {
+                rb.AddForce(Vector2.up * jumpForce);
+                isJumping = true;
+            }
+            return;
+        }
+
         if(inputValue.isPressed && dashTime < dashLimit)
         {
             isDashHeld = true;
@@ -102,8 +125,53 @@ public class Player : MonoBehaviour
         //remove the E if you show it
     }
 
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("CaveObstacle"))
+        {
+            rb.AddForce(Vector2.left * 200);
+        }
+    }
+
     void FixedUpdate()
     {
+        if(transform.position.x > 450 && !hasWon)
+        {
+            hasWon = true;
+            LevelManager.instance.Win();
+        }
+        if(mode == 1)
+        {
+            float y = rb.linearVelocity.y;
+            isJumping = y == 0;
+            rb.AddForce(Vector2.right * walkingSpeed);
+            return;
+        }
+
+        if(transform.position.x > 210)
+        {
+            mode = 1;
+            animator.SetFloat("angle", 0);
+            animator.SetInteger("mode", 1);
+            rb.gravityScale = 1f;
+            rb.linearVelocity = Vector2.zero;
+        }
+
+        if(direction != displayDirection)
+        {
+            displayDirection += direction * Time.deltaTime * turnSpeed;
+
+            if(Mathf.Sign(displayDirection) == direction && Mathf.Abs(displayDirection) >= 1)
+                displayDirection = direction;
+
+            transform.localScale = new Vector3(scale.x * displayDirection, scale.y, scale.z);
+        }
+
+        if(stunTimer > 0)
+        {
+            stunTimer -= Time.deltaTime;
+            return;
+        }
 
         if(!isAtMouse){
             movementVector = (Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
@@ -139,16 +207,6 @@ public class Player : MonoBehaviour
                     sp.color = Color.Lerp(Color.white, normalColor,dashTime/dashLimit);
                 }
             }
-        }
-
-        if(direction != displayDirection)
-        {
-            displayDirection += direction * Time.deltaTime * turnSpeed;
-
-            if(Mathf.Sign(displayDirection) == direction && Mathf.Abs(displayDirection) >= 1)
-                displayDirection = direction;
-
-            transform.localScale = new Vector3(scale.x * displayDirection, scale.y, scale.z);
         }
     }
     void OnInteract(InputValue inputValue)
@@ -201,5 +259,15 @@ public class Player : MonoBehaviour
     public bool getIsDashing()
     {
         return isDashing;
+    }
+
+    public void stun()
+    {
+        stunTimer = stunTime;
+    }
+
+    public bool isStunned()
+    {
+        return stunTimer > 0;
     }
 }
