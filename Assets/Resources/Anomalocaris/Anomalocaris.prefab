@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 8027010376854905190}
   - component: {fileID: 7521994529772134168}
   - component: {fileID: 3387576858866505507}
-  m_Layer: 0
+  - component: {fileID: 8274990800806934918}
+  m_Layer: 8
   m_Name: Anomalocaris
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +351,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &3387576858866505507
 Animator:
   serializedVersion: 7
@@ -373,3 +374,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8274990800806934918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3312186787011649006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 605c731e1b59ce34bb6389de107ee1b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Anomalocaris
+  lines: 0200000002000000020000000300000001000000050000000200000001000000020000000200000001000000010000000c0000000500000003000000
+  speed: 3
+  bottom: -100

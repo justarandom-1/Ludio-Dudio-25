@@ -11,9 +11,9 @@ public class CutsceneManager : LevelManager
 {
     new public static CutsceneManager instance;
 
-    [SerializeField] protected GameObject[] objects;
+    [SerializeField] protected Animator[] objects;
 
-    [SerializeField] protected AudioClip[] sounds;
+    // [SerializeField] protected AudioClip[] sounds;
 
     protected static AudioClip[] voiceClips;
 
@@ -21,7 +21,6 @@ public class CutsceneManager : LevelManager
 
     protected string currentChar;
 
-    protected List<Animator> objects_;
     public int stage = 0;
 
     protected LineView lv;
@@ -42,6 +41,7 @@ public class CutsceneManager : LevelManager
     protected bool doNotSave;
 
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
@@ -57,22 +57,15 @@ public class CutsceneManager : LevelManager
 
         if (voiceClips == null)
         {
-            voiceClips = Resources.LoadAll<AudioClip>("SFX/Voice Clips");
+            voiceClips = Resources.LoadAll<AudioClip>("Cutscenes/Voice Clips");
         }
 
         lv = GetComponent<LineView>();
         da = GetComponent<DialogueAudio>();
         if(GameObject.Find("Dialogue System") != null)
             dr = GameObject.Find("Dialogue System").GetComponent<DialogueRunner>();
-        tmp = transform.GetChild(3).gameObject.GetComponent<TMP_Text>();
+        // tmp = transform.GetChild(3).gameObject.GetComponent<TMP_Text>();
         rt = GetComponent<RectTransform>();
-
-        objects_ = new List<Animator>();
-
-        for (int i = 0; i < objects.Length; i++)
-        {
-            objects_.Add(objects[i].GetComponent<Animator>());
-        }
 
         nextScene = "Day 2 End";
 
@@ -92,8 +85,9 @@ public class CutsceneManager : LevelManager
 
     protected override void Update()
     {
-        state2();
     }
+
+
     public virtual void Increment()
     {
         lv.UserRequestedViewAdvancement();
@@ -103,21 +97,21 @@ public class CutsceneManager : LevelManager
         // stage++;
     }
 
-    public virtual void Skip()
-    {
-        if (isWaitingForInput) return;
+    // public virtual void Skip()
+    // {
+    //     if (isWaitingForInput) return;
 
-        SkipScene();
-    }
+    //     SkipScene();
+    // }
 
-    public void SelectOption(GameObject selector)
-    {
-        EventSystem.current.SetSelectedGameObject(null);
-        selector.SetActive(false);
-        audioSource.PlayOneShot(Resources.Load<AudioClip>("SFX/select"));
-        isWaitingForInput = false;
-        Increment();
-    }
+    // public void SelectOption(GameObject selector)
+    // {
+    //     EventSystem.current.SetSelectedGameObject(null);
+    //     selector.SetActive(false);
+    //     audioSource.PlayOneShot(Resources.Load<AudioClip>("UI/select"));
+    //     isWaitingForInput = false;
+    //     Increment();
+    // }
 
     public void SetChar(string newChar)
     {
@@ -136,18 +130,18 @@ public class CutsceneManager : LevelManager
 
         da.setClip(clip);
 
-        if (newChar == "Nayeli")
-        {
-            rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, 90);
-        }
-        else if (newChar == "Shae" || newChar == "Servantes" || newChar == "Generic 3")
-        {
-            rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, 70);
-        }
-        else if (rt.anchoredPosition.y != 100)
-        {
-            rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, 100);
-        }
+        // if (newChar == "Nayeli")
+        // {
+        //     rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, 90);
+        // }
+        // else if (newChar == "Shae" || newChar == "Servantes" || newChar == "Generic 3")
+        // {
+        //     rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, 70);
+        // }
+        // else if (rt.anchoredPosition.y != 100)
+        // {
+        //     rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, 100);
+        // }
 
         // if (fonts.Length > 1)
         // {
@@ -165,19 +159,19 @@ public class CutsceneManager : LevelManager
             // }
     }
 
-    public void SkipScene()
-    {
-        audioSource.PlayOneShot(Resources.Load<AudioClip>("SFX/select"));
+    // public void SkipScene()
+    // {
+    //     audioSource.PlayOneShot(Resources.Load<AudioClip>("SFX/select"));
 
-        skipping = true;
-        EndLevel();
-    }
+    //     skipping = true;
+    //     EndLevel();
+    // }
 
-    public override void EndLevel()
-    {
-        base.EndLevel();
-        skipping = true;
-    }
+    // public override void EndLevel()
+    // {
+    //     base.EndLevel();
+    //     skipping = true;
+    // }
 
     [YarnFunction("uppercase")]
     public static string Uppercase(string text)

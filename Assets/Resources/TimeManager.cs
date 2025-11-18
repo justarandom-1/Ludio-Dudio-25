@@ -28,14 +28,14 @@ public class TimeManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if(hasEnded)
         {
             return;
         }
 
-        timer += Time.deltaTime;
+        timer += Time.unscaledDeltaTime;
 
         if(!hasStarted)
         {

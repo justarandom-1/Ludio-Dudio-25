@@ -34,12 +34,12 @@ public class KeyboardListener_ : MonoBehaviour
         // at = GetComponent<ActionText>();    
     }
 
-    public void Skip()
-    {
-        EventSystem.current.SetSelectedGameObject(null);
+    // public void Skip()
+    // {
+    //     EventSystem.current.SetSelectedGameObject(null);
 
-        cm.Skip();
-    }
+    //     cm.Skip();
+    // }
 
     public void Update()
     {

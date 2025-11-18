@@ -197,4 +197,9 @@ public class Player : MonoBehaviour
             b = 0;
         return new Vector2(a, b);
     }
+
+    public bool getIsDashing()
+    {
+        return isDashing;
+    }
 }

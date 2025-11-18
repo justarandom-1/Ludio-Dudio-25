@@ -109,7 +109,7 @@ namespace Yarn.Unity
                 }
 
                 var fraction = timeElapsed / fadeTime;
-                timeElapsed += Time.deltaTime;
+                timeElapsed += Time.unscaledDeltaTime;
 
                 float a = Mathf.Lerp(from, to, fraction);
 
@@ -184,7 +184,7 @@ namespace Yarn.Unity
                 }
 
                 yield return null;
-                accumulator += Time.deltaTime;
+                accumulator += Time.unscaledDeltaTime;
             }
         }
 
@@ -240,7 +240,7 @@ namespace Yarn.Unity
             // Instead, we'll accumulate time every frame, and display as
             // many letters in that frame as we need to in order to achieve
             // the requested speed.
-            var accumulator = Time.deltaTime;
+            var accumulator = Time.unscaledDeltaTime;
 
             while (text.maxVisibleCharacters < characterCount)
             {
@@ -266,7 +266,7 @@ namespace Yarn.Unity
                             onPauseEnded?.Invoke();
 
                             // need to reset the accumulator
-                            accumulator = Time.deltaTime;
+                            accumulator = Time.unscaledDeltaTime;
                         }
                     }
 
@@ -315,7 +315,7 @@ namespace Yarn.Unity
                     }
 
                 }
-                accumulator += Time.deltaTime;
+                accumulator += Time.unscaledDeltaTime;
 
                 yield return null;
             }
